@@ -36,6 +36,14 @@ def test_live_only_ui_has_general_title_and_collapsed_connection_setup(app):
     assert not any("Illustrative" in block.value for block in app.markdown)
 
 
+def test_browser_tab_title_matches_the_product_name(monkeypatch):
+    configure_page = MagicMock()
+    monkeypatch.setattr("streamlit.set_page_config", configure_page)
+    app = AppTest.from_file(str(APP), default_timeout=20).run()
+    assert not app.exception
+    configure_page.assert_called_once_with(page_title="Web IQ Insight Studio", layout="wide")
+
+
 def test_live_ui_requires_consent_and_does_not_autorun(monkeypatch):
     monkeypatch.setattr(demo, "live_requirements", lambda path: [])
     run = MagicMock(return_value=replace(demo.example_briefing(), is_example=False))

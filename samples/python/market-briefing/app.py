@@ -25,7 +25,7 @@ CONFIG_PATH = SAMPLE_DIR / "config.local.json"
 if not CONFIG_PATH.exists():
     CONFIG_PATH = SAMPLE_DIR / "config.json"
 
-st.set_page_config(page_title="Web IQ | Insight Studio", layout="wide")
+st.set_page_config(page_title="Web IQ Insight Studio", layout="wide")
 logging.basicConfig(
     level=logging.WARNING,
     format="%(asctime)s %(levelname)s %(name)s %(message)s",
